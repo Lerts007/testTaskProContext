@@ -1,24 +1,24 @@
 <template>
   <div class="item">
     <label>
-      <input type="checkbox" class="checkbox" v-model="item.selected" />
+      <input type="checkbox" class="custom-checkbox" v-model="item.selected" />
       {{ item.name }}
     </label>
 
     <label>
-      {{ item.quantity }}
+      <input type="number" v-model="item.quantity" min="0" />
       <input class="item-color" type="color" v-model="item.color" />
     </label>
   </div>
 </template>
 
 <script setup>
-import { ref, defineProps } from "vue";
-
 const props = defineProps(["item"]);
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "../../assets/checkbox.css";
+
 .item {
   margin-bottom: 5px;
 

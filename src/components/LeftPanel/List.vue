@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      :class="{ active: list.collapsed }"
+      :class="{ active: !list.collapsed }"
       @click="store.commit('toggleList', props.index)"
     >
       V
@@ -9,6 +9,7 @@
     <label>
       <input
         type="checkbox"
+        class="custom-checkbox"
         v-model="list.selected"
         @change="store.commit('selectAllItems', props.index)"
         :indeterminate="list.indeterminate"
@@ -16,7 +17,7 @@
       {{ list.name }}</label
     >
   </div>
-  <div class="items" v-if="!list.collapsed">
+  <div class="items" v-if="list.collapsed">
     <Item
       v-for="(item, i) in list.items"
       :key="i"
@@ -38,6 +39,8 @@ const list = store.state.lists[props.index];
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/checkbox.css";
+
 .items {
   padding-left: 50px;
 }

@@ -1,23 +1,27 @@
 <template>
-  <div class="leftPanel">
+  <div class="rightPanel">
     <div class="list" v-for="(list, index) in store.state.lists" :key="index">
-      <List :index="index" />
+      <ListColor :index="index" />
     </div>
   </div>
 </template>
+
 <script setup>
 import { useStore } from "vuex";
-import List from "./List.vue";
+import ListColor from "./ListColor.vue";
 
 const store = useStore();
 </script>
 
 <style lang="scss" scoped>
-.leftPanel {
+.rightPanel {
+  padding: 5px;
   border: 1px solid #ccc;
 }
 .list {
-  width: 300px;
+  width: 400px;
   margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 </style>
